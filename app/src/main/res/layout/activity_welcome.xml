@@ -16,7 +16,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.2"
+        android:alpha="0"
+        tools:alpha="100" />
 
     <TextView
         android:id="@+id/tvAppName"
@@ -33,7 +35,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivLogo"
-        tools:ignore="TextContrastCheck" />
+        tools:ignore="TextContrastCheck"
+        android:alpha="0"
+        tools:alpha="100" />
 
     <TextView
         android:id="@+id/tvMotto"
@@ -48,7 +52,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAppName"
-        tools:ignore="TextContrastCheck" />
+        tools:ignore="TextContrastCheck"
+        android:alpha="0"
+        tools:alpha="100" />
 
     <TextView
         android:id="@+id/tvGreetings"
@@ -67,7 +73,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMotto"
         app:layout_constraintVertical_bias="0.3"
-        tools:ignore="TextContrastCheck" />
+        tools:ignore="TextContrastCheck"
+        android:alpha="0"
+        tools:alpha="100" />
 
     <Button
         android:id="@+id/btnLogin"
@@ -81,7 +89,9 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvGreetings"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvGreetings"
+        android:alpha="0"
+        tools:alpha="100"/>
 
     <Button
         android:id="@+id/btnSignup"
@@ -95,6 +105,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"/>
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        android:alpha="0"
+        tools:alpha="100"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

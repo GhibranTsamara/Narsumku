@@ -70,7 +70,9 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appbar"
-        tools:ignore="TextContrastCheck" />
+        tools:ignore="TextContrastCheck"
+        android:alpha="0"
+        tools:alpha="100" />
 
     <TextView
         android:id="@+id/tvAppIntro"
@@ -87,7 +89,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvWelcome"
         tools:ignore="TextContrastCheck"
-        android:justificationMode="inter_word"/>
+        android:justificationMode="inter_word"
+        android:alpha="0"
+        tools:alpha="100"/>
 
     <TextView
         android:id="@+id/tvEmailOrMobileNumber"
@@ -102,7 +106,9 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/tvAppIntro"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:alpha="0"
+        tools:alpha="100"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/EmailEditTextLayout"
@@ -114,7 +120,9 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmailOrMobileNumber">
+        app:layout_constraintTop_toBottomOf="@+id/tvEmailOrMobileNumber"
+        android:alpha="0"
+        tools:alpha="100">
 
         <EditText
             android:id="@+id/EmailEditText"
@@ -124,7 +132,9 @@
             android:ems="10"
             android:hint="@string/email_example"
             android:inputType="textEmailAddress"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:alpha="0"
+            tools:alpha="100" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -140,7 +150,9 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/EmailEditTextLayout"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:alpha="0"
+        tools:alpha="100"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/PasswordEditTextLayout"
@@ -153,7 +165,9 @@
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPassword">
+        app:layout_constraintTop_toBottomOf="@+id/tvPassword"
+        android:alpha="0"
+        tools:alpha="100">
 
         <EditText
             android:id="@+id/PasswordEditText"
@@ -164,7 +178,9 @@
             android:ems="10"
             android:hint="@string/password_example"
             android:inputType="textPassword"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:alpha="0"
+            tools:alpha="100" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -181,7 +197,9 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PasswordEditTextLayout"
-        tools:ignore="TextContrastCheck"/>
+        tools:ignore="TextContrastCheck"
+        android:alpha="0"
+        tools:alpha="100"/>
 
     <Button
         android:id="@+id/btnLogin"
@@ -195,7 +213,9 @@
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvForgetPassword"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvForgetPassword"
+        android:alpha="0"
+        tools:alpha="100"/>
 
     <LinearLayout
         android:id="@+id/LinearLayout"
@@ -215,7 +235,9 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@id/btnSignup"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:alpha="0"
+            tools:alpha="100"/>
 
         <TextView
             android:id="@+id/btnSignup"
@@ -229,7 +251,9 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tvNoAccount"/>
+            app:layout_constraintStart_toStartOf="@id/tvNoAccount"
+            android:alpha="0"
+            tools:alpha="100"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

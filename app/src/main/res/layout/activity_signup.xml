@@ -70,7 +70,9 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/appbar"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:alpha="0"
+        tools:alpha="100"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/FullNameEditTextLayout"
@@ -82,7 +84,9 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFullName">
+        app:layout_constraintTop_toBottomOf="@+id/tvFullName"
+        android:alpha="0"
+        tools:alpha="100">
 
         <EditText
             android:id="@+id/FullNameEditText"
@@ -93,7 +97,9 @@
             android:hint="@string/name_example"
             android:textSize="16sp"
             android:inputType="textPersonName"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:alpha="0"
+            tools:alpha="100" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -109,7 +115,9 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/FullNameEditTextLayout"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:alpha="0"
+        tools:alpha="100"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/PasswordEditTextLayout"
@@ -122,7 +130,9 @@
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPassword">
+        app:layout_constraintTop_toBottomOf="@+id/tvPassword"
+        android:alpha="0"
+        tools:alpha="100">
 
         <EditText
             android:id="@+id/PasswordEditText"
@@ -134,7 +144,9 @@
             android:hint="@string/password_example"
             android:textSize="16sp"
             android:inputType="textPassword"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:alpha="0"
+            tools:alpha="100" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -150,7 +162,9 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/PasswordEditTextLayout"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:alpha="0"
+        tools:alpha="100"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/EmailEditTextLayout"
@@ -162,7 +176,9 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail">
+        app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+        android:alpha="0"
+        tools:alpha="100">
 
         <EditText
             android:id="@+id/EmailEditText"
@@ -173,7 +189,9 @@
             android:hint="@string/email_example"
             android:textSize="16sp"
             android:inputType="textEmailAddress"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:alpha="0"
+            tools:alpha="100" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -189,7 +207,9 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/EmailEditTextLayout"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:alpha="0"
+        tools:alpha="100"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/MobileNumberEditTextLayout"
@@ -201,7 +221,9 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMobileNumber">
+        app:layout_constraintTop_toBottomOf="@+id/tvMobileNumber"
+        android:alpha="0"
+        tools:alpha="100">
 
         <EditText
             android:id="@+id/MobileNumberEditText"
@@ -212,7 +234,9 @@
             android:hint="@string/mobile_number_example"
             android:textSize="16sp"
             android:inputType="numberSigned"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:alpha="0"
+            tools:alpha="100" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -222,13 +246,15 @@
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/mobile_number"
+        android:text="@string/date"
         android:fontFamily="@font/leaguespartan"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/MobileNumberEditTextLayout"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:alpha="0"
+        tools:alpha="100"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/DateOfBirthEditTextLayout"
@@ -240,7 +266,9 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDateOfBirth">
+        app:layout_constraintTop_toBottomOf="@+id/tvDateOfBirth"
+        android:alpha="0"
+        tools:alpha="100">
 
         <EditText
             android:id="@+id/DateOfBirthEditText"
@@ -251,7 +279,9 @@
             android:hint="@string/date_of_birth"
             android:textSize="16sp"
             android:inputType="date"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:alpha="0"
+            tools:alpha="100" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -266,7 +296,9 @@
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/DateOfBirthEditTextLayout" />
+        app:layout_constraintTop_toBottomOf="@id/DateOfBirthEditTextLayout"
+        android:alpha="0"
+        tools:alpha="100" />
 
     <LinearLayout
         android:id="@+id/TermsAndPolicy"
@@ -286,7 +318,9 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/btnSignup"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:alpha="0"
+            tools:alpha="100"/>
 
         <TextView
             android:id="@+id/tvAnd"
@@ -299,7 +333,9 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tvTerms"/>
+            app:layout_constraintStart_toStartOf="@id/tvTerms"
+            android:alpha="0"
+            tools:alpha="100"/>
 
         <TextView
             android:id="@+id/tvPolicy"
@@ -313,7 +349,9 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tvTerms"/>
+            app:layout_constraintStart_toStartOf="@id/tvTerms"
+            android:alpha="0"
+            tools:alpha="100"/>
     </LinearLayout>
 
     <Button
@@ -329,7 +367,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/TermsAndPolicy"
-        tools:layout_editor_absoluteY="615dp" />
+        tools:layout_editor_absoluteY="615dp"
+        android:alpha="0"
+        tools:alpha="100" />
 
     <LinearLayout
         android:id="@+id/LinearLayout"
@@ -349,7 +389,9 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@id/btnSignup"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:alpha="0"
+            tools:alpha="100"/>
 
         <TextView
             android:id="@+id/btnLogin"
@@ -363,7 +405,9 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tvNoAccount"/>
+            app:layout_constraintStart_toStartOf="@id/tvNoAccount"
+            android:alpha="0"
+            tools:alpha="100"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
