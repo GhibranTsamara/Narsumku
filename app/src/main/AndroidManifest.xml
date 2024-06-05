@@ -13,10 +13,10 @@
         android:theme="@style/Theme.Narsumku"
         tools:targetApi="31">
         <activity
-            android:name=".ui.welcome.WelcomeActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name=".ui.welcome.WelcomeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.signup.SignupActivity"
@@ -25,8 +25,9 @@
             android:name=".ui.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.MainActivity"
-            android:exported="true">
+            android:name=".ui.splash.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

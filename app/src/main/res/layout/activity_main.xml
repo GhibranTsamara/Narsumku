@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
+        android:background="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -83,6 +83,16 @@
                         android:textStyle="bold"
                         tools:ignore="TextContrastCheck" />
                 </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/btnLogout"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_logout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ivUserPhoto"
+                    app:layout_constraintBottom_toBottomOf="@id/ivUserPhoto"/>
 
                 <LinearLayout
                     android:id="@+id/SpeakersLinearLayout"
@@ -176,7 +186,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- RecyclerView for speakers list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewSpeakers"
         android:layout_width="0dp"
