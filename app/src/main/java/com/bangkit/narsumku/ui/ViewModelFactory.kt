@@ -7,6 +7,7 @@ import com.bangkit.narsumku.data.UserRepository
 import com.bangkit.narsumku.di.Injection
 import com.bangkit.narsumku.ui.login.LoginViewModel
 import com.bangkit.narsumku.ui.main.MainViewModel
+import com.bangkit.narsumku.ui.signup.SignupViewModel
 
 class ViewModelFactory(private val repository: UserRepository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -16,8 +17,13 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 MainViewModel(repository) as T
             }
+
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(repository) as T
+            }
+
+            modelClass.isAssignableFrom(SignupViewModel::class.java) -> {
+                SignupViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

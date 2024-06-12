@@ -5,10 +5,13 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import com.bangkit.narsumku.data.pref.UserModel
+import com.bangkit.narsumku.data.Results
+import com.bangkit.narsumku.data.response.LoginResponse
 import com.bangkit.narsumku.databinding.ActivityLoginBinding
 import com.bangkit.narsumku.ui.ViewModelFactory
 import com.bangkit.narsumku.ui.main.MainActivity
@@ -26,24 +29,25 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        showLoading(false)
         setupAction()
         playAnimation()
     }
 
     private fun playAnimation() {
 
-        val login = ObjectAnimator.ofFloat(binding.btnLogin, View.ALPHA, 1f).setDuration(250)
-        val welcome = ObjectAnimator.ofFloat(binding.tvWelcome, View.ALPHA, 1f).setDuration(250)
-        val intro = ObjectAnimator.ofFloat(binding.tvAppIntro, View.ALPHA, 1f).setDuration(250)
-        val tvEmail = ObjectAnimator.ofFloat(binding.tvEmailOrMobileNumber, View.ALPHA, 1f).setDuration(250)
-        val email = ObjectAnimator.ofFloat(binding.EmailEditText, View.ALPHA, 1f).setDuration(250)
-        val layoutEmail = ObjectAnimator.ofFloat(binding.EmailEditTextLayout, View.ALPHA, 1f).setDuration(250)
-        val tvPassword = ObjectAnimator.ofFloat(binding.tvPassword, View.ALPHA, 1f).setDuration(250)
-        val password = ObjectAnimator.ofFloat(binding.PasswordEditText, View.ALPHA, 1f).setDuration(250)
-        val layoutPassword = ObjectAnimator.ofFloat(binding.PasswordEditTextLayout, View.ALPHA, 1f).setDuration(250)
-        val forgotPassword = ObjectAnimator.ofFloat(binding.tvForgetPassword, View.ALPHA, 1f).setDuration(250)
-        val account = ObjectAnimator.ofFloat(binding.tvNoAccount, View.ALPHA, 1f).setDuration(250)
-        val signup = ObjectAnimator.ofFloat(binding.btnSignup, View.ALPHA, 1f).setDuration(250)
+        val login = ObjectAnimator.ofFloat(binding.btnLogin, View.ALPHA, 1f).setDuration(ANIMATION_DURATION)
+        val welcome = ObjectAnimator.ofFloat(binding.tvWelcome, View.ALPHA, 1f).setDuration(ANIMATION_DURATION)
+        val intro = ObjectAnimator.ofFloat(binding.tvAppIntro, View.ALPHA, 1f).setDuration(ANIMATION_DURATION)
+        val tvEmail = ObjectAnimator.ofFloat(binding.tvEmailOrMobileNumber, View.ALPHA, 1f).setDuration(ANIMATION_DURATION)
+        val email = ObjectAnimator.ofFloat(binding.EmailEditText, View.ALPHA, 1f).setDuration(ANIMATION_DURATION)
+        val layoutEmail = ObjectAnimator.ofFloat(binding.EmailEditTextLayout, View.ALPHA, 1f).setDuration(ANIMATION_DURATION)
+        val tvPassword = ObjectAnimator.ofFloat(binding.tvPassword, View.ALPHA, 1f).setDuration(ANIMATION_DURATION)
+        val password = ObjectAnimator.ofFloat(binding.PasswordEditText, View.ALPHA, 1f).setDuration(ANIMATION_DURATION)
+        val layoutPassword = ObjectAnimator.ofFloat(binding.PasswordEditTextLayout, View.ALPHA, 1f).setDuration(ANIMATION_DURATION)
+        val forgotPassword = ObjectAnimator.ofFloat(binding.tvForgetPassword, View.ALPHA, 1f).setDuration(ANIMATION_DURATION)
+        val account = ObjectAnimator.ofFloat(binding.tvNoAccount, View.ALPHA, 1f).setDuration(ANIMATION_DURATION)
+        val signup = ObjectAnimator.ofFloat(binding.btnSignup, View.ALPHA, 1f).setDuration(ANIMATION_DURATION)
 
         val together = AnimatorSet().apply {
             playTogether(account, signup)
@@ -69,18 +73,15 @@ class LoginActivity : AppCompatActivity() {
     private fun setupAction() {
         binding.btnLogin.setOnClickListener {
             val email = binding.EmailEditText.text.toString()
-            viewModel.saveSession(UserModel(email, "sample_token"))
-            AlertDialog.Builder(this).apply {
-                setTitle("Yeah!")
-                setMessage("You have successfully logged in.")
-                setPositiveButton("Continue") { _, _ ->
-                    val intent = Intent(context, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(intent)
-                    finish()
+            val password = binding.PasswordEditText.text.toString()
+
+            viewModel.login(email, password)
+            viewModel.loginResult.observe(this) { result ->
+                when (result) {
+                    is Results.Loading -> showLoading(true)
+                    is Results.Success -> handleSuccessResult(result.data)
+                    is Results.Error -> handleErrorResult(result.error)
                 }
-                create()
-                show()
             }
         }
 
@@ -97,6 +98,40 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun handleSuccessResult(response: LoginResponse) {
+        showLoading(false)
+        AlertDialog.Builder(this).apply {
+            setTitle("Yeah!")
+            setMessage(response.message)
+            setPositiveButton("OKE") { _, _ ->
+                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                finish()
+            }
+            create()
+            show()
+        }
+    }
+
+    private fun handleErrorResult(errorMessage: String) {
+        showLoading(false)
+        AlertDialog.Builder(this).apply {
+            setTitle("OOPS!")
+            setMessage(errorMessage)
+            setPositiveButton("OKE") { _, _ ->
+                Log.d("LoginActivity", "User clicked OK on error dialog")
+                Toast.makeText(this@LoginActivity, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
+            }
+            create()
+            show()
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
     @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
     override fun onBackPressed() {
         @Suppress("DEPRECATION")
@@ -107,4 +142,7 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
+    private companion object {
+        const val ANIMATION_DURATION = 250L
+    }
 }
