@@ -1,19 +1,17 @@
 package com.bangkit.narsumku.data
 
-import android.util.Log
 import com.bangkit.narsumku.data.pref.UserModel
 import com.bangkit.narsumku.data.pref.UserPreference
 import com.bangkit.narsumku.data.response.ErrorResponse
+import com.bangkit.narsumku.data.response.LoginRequest
 import com.bangkit.narsumku.data.response.LoginResponse
+import com.bangkit.narsumku.data.response.SignupRequest
 import com.bangkit.narsumku.data.response.SignupResponse
 import com.bangkit.narsumku.data.retrofit.ApiConfig
 import com.bangkit.narsumku.data.retrofit.ApiService
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.HttpException
-import retrofit2.Response
 
 class UserRepository private constructor(
     private val userPreference: UserPreference,
@@ -35,11 +33,12 @@ class UserRepository private constructor(
     suspend fun signup(name: String, email: String, password: String): Results<SignupResponse> {
         Results.Loading
         return try {
-            val response = apiService.register(name, email, password)
-            if (response.error == true) {
-                Results.Error(response.message ?: "Unknown error")
+            val response = SignupRequest(name, email, password)
+            val client = apiService.register(response)
+            if (client.error == true) {
+                Results.Error(client.message ?: "Unknown error")
             } else {
-                Results.Success(response)
+                Results.Success(client)
             }
         } catch (e: HttpException) {
             val jsonInString = e.response()?.errorBody()?.string()
@@ -52,12 +51,13 @@ class UserRepository private constructor(
     suspend fun login(email: String, password: String): Results<LoginResponse> {
         Results.Loading
         return try {
-            val response = apiService.login(email, password)
+            val response = LoginRequest(email, password)
+            val client = apiService.login(response)
 
-            if (response.error) {
-                Results.Error(response.message)
+            if (client.error) {
+                Results.Error(client.message)
             } else {
-                val session = response.loginResult?.let {
+                val session = client.loginResult?.let {
                     UserModel(
                         email = email,
                         token = it.token,
@@ -67,8 +67,8 @@ class UserRepository private constructor(
                 if (session != null) {
                     saveSession(session)
                 }
-                response.loginResult?.let { ApiConfig.updateToken(it.token) }
-                Results.Success(response)
+                client.loginResult?.let { ApiConfig.updateToken(it.token) }
+                Results.Success(client)
             }
         } catch (e: HttpException) {
             val jsonInString = e.response()?.errorBody()?.string()
